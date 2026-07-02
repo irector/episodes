@@ -95,8 +95,13 @@ body {
 
 .brand,
 .hero h1,
-.site-footer__inner > span:first-child {
+.site-footer__inner > span:first-child,
+.episodes-word {
   font-family: var(--font);
+}
+
+.episodes-word {
+  font-style: normal;
 }
 
 h2,
