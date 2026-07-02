@@ -4,13 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Lenis from "lenis";
 
-import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
-
 import "lenis/dist/lenis.css";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 import "./styles.scss";
 
@@ -121,39 +115,13 @@ const initHeroEntrance = () => {
 
 
   gsap.from(".hero__copy > *, .hero__link", {
-
     y: 48,
-
     opacity: 0,
-
     duration: 1,
-
     stagger: 0.14,
-
     ease: "power3.out",
-
     delay: 0.15,
-
   });
-
-
-
-  gsap.from(".hero__ticker span", {
-
-    y: 24,
-
-    opacity: 0,
-
-    duration: 0.9,
-
-    stagger: 0.08,
-
-    ease: "power3.out",
-
-    delay: 0.55,
-
-  });
-
 };
 
 
@@ -264,65 +232,6 @@ const initGrain = () => {
   });
 };
 
-const initEpisodesSlider = () => {
-  const slider = document.querySelector("[data-episodes-slider]");
-
-  if (!slider) return;
-
-  const equalizeSlideHeights = () => {
-    const slides = [...slider.querySelectorAll(".swiper-slide")];
-
-    slides.forEach((slide) => {
-      slide.style.height = "";
-    });
-
-    const maxHeight = slides.reduce(
-      (height, slide) => Math.max(height, slide.offsetHeight),
-      0
-    );
-
-    if (!maxHeight) return;
-
-    slides.forEach((slide) => {
-      slide.style.height = `${maxHeight}px`;
-    });
-
-    slider.style.height = `${maxHeight}px`;
-  };
-
-  const swiper = new Swiper(slider, {
-    modules: [Navigation, Pagination],
-    slidesPerView: 1,
-    spaceBetween: 0,
-    speed: 700,
-    autoHeight: false,
-    navigation: {
-      nextEl: "[data-episodes-next]",
-      prevEl: "[data-episodes-prev]",
-    },
-    pagination: {
-      el: "[data-episodes-pagination]",
-      clickable: true,
-    },
-    on: {
-      init: equalizeSlideHeights,
-      resize: equalizeSlideHeights,
-    },
-  });
-
-  slider.querySelectorAll("img").forEach((image) => {
-    if (image.complete) return;
-    image.addEventListener("load", equalizeSlideHeights, { once: true });
-  });
-
-  window.addEventListener("resize", equalizeSlideHeights);
-  window.addEventListener("load", equalizeSlideHeights);
-
-  return swiper;
-};
-
-
-
 initLenis();
 
 initGrain();
@@ -332,10 +241,6 @@ initHeroEntrance();
 initSectionReveals();
 
 initTilt();
-
-initEpisodesSlider();
-
-
 
 window.addEventListener("load", () => ScrollTrigger.refresh());
 
