@@ -11,11 +11,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
       rel="stylesheet"
     >
   </head>
   <body>
+    <div class="grain" data-grain aria-hidden="true"></div>
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="EPISODES home">EPISODES</a>
       <nav class="nav" aria-label="Основна навігація">
@@ -30,7 +31,6 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title" data-hero>
         <div class="hero__bg" aria-hidden="true"></div>
-        <div class="hero__overlay" aria-hidden="true"></div>
 
         <div class="hero__inner section-shell">
           <div class="hero__copy">
@@ -39,11 +39,8 @@
             <p class="hero__lead">
               Вікенди та подорожі, де ти живеш у фільмі як головна героїня.
             </p>
-            <div class="hero__actions" aria-label="Швидкі дії">
-              <a class="button button--primary" href="#episodes">Дивитись епізоди</a>
-              <a class="button button--ghost" href="#about">Про формат</a>
-            </div>
           </div>
+          <a class="hero__link" href="#episodes">Дивитись епізоди</a>
         </div>
       </section>
 
@@ -56,13 +53,16 @@
           <h2 id="about-title">episodes — це <em>серіал</em>, а не разова вечірка.</h2>
           <div class="manifesto__text">
             <p>
-              Кожен вікенд відкриває нову сцену: кіно, подорож, тепла вечеря,
-              нові знайомства та простір, де можна бути собою.
+              Кожен епізод – окремий вікенд зі своїм фільмом-натхненням, жанром і настроєм.
+              Ти приїжджаєш прожити кілька днів усередині історії: новий світ, своя роль, перетворення — і фінальна сцена, заради якої й існує весь фільм.
             </p>
             <p>
-              Тут немає випадкових масовок. Є головні героїні, живі розмови,
-              красиві кадри та моменти, які хочеться згадувати як улюблену серію.
+              Поряд із тобою – режисер, знімальна група і команда, яка піклується про тебе від першої хвилини до титрів. У фіналі – маленька прем'єра великого фільму, де головна роль твоя. Не кілька гарних кадрів на згадку, а історія, яку ти проживаєш по-справжньому.
             </p>
+            <p>
+              А коли епізод закінчується, історія – ні: поряд лишаються люди, з якими ти все це прожила, і попереду вже чекає наступна серія.
+            </p>
+            <p class="manifesto__accent">У головній ролі — <em>ти</em>.</p>
           </div>
         </div>
       </section>
@@ -75,52 +75,109 @@
           </div>
         </div>
 
-        <article class="featured-episode">
-          <div class="featured-episode__glow" aria-hidden="true"></div>
-          <div class="featured-episode__glow featured-episode__glow--left" aria-hidden="true"></div>
-          <div class="featured-episode__inner section-shell">
-            <div class="featured-episode__visual">
-              <div class="featured-episode__stills">
-                <figure class="featured-episode__still featured-episode__still--a" data-tilt>
-                  <img
-                    src="images/next-episode-1.png"
-                    alt=""
-                    width="800"
-                    height="600"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </figure>
-                <figure class="featured-episode__still featured-episode__still--b" data-tilt>
-                  <img
-                    src="images/next-episode-2.png"
-                    alt=""
-                    width="800"
-                    height="600"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </figure>
-              </div>
-              <p class="featured-episode__stamp">за мотивами х/ф «Брудні танці»</p>
+        <div class="episodes-slider swiper" data-episodes-slider>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="featured-episode">
+                <div class="featured-episode__glow" aria-hidden="true"></div>
+                <div class="featured-episode__glow featured-episode__glow--left" aria-hidden="true"></div>
+                <div class="featured-episode__inner section-shell">
+                  <div class="featured-episode__visual">
+                    <figure class="featured-episode__still" data-tilt>
+                      <img
+                        src="images/first-episode.png"
+                        alt="Кадр з епізоду «Baby, твій вихід»"
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                        decoding="async"
+                      >
+                    </figure>
+                    <p class="featured-episode__stamp">за мотивами х/ф «Брудні танці»</p>
+                  </div>
+                  <div class="featured-episode__copy">
+                    <p class="featured-episode__label">S1 · E1 · «Baby, твій вихід»</p>
+                    <h3>Baby, твій вихід</h3>
+                    <dl class="featured-episode__meta">
+                      <div>
+                        <dt>Жанр</dt>
+                        <dd>Танцювальне кіно про літо, музику й сміливість.</dd>
+                      </div>
+                      <div>
+                        <dt>Хронометраж</dt>
+                        <dd>31 липня – 2 серпня</dd>
+                      </div>
+                    </dl>
+                    <a class="featured-episode__cta" href="#contact">Забронювати роль</a>
+                  </div>
+                </div>
+              </article>
             </div>
-            <div class="featured-episode__copy">
-              <p class="featured-episode__label">S1 · E1 · «Baby, твій вихід»</p>
-              <h3>Baby, твій вихід</h3>
-              <dl class="featured-episode__meta">
-                <div>
-                  <dt>Жанр</dt>
-                  <dd>Танцювальне кіно про літо, музику й сміливість.</dd>
+
+            <div class="swiper-slide">
+              <article class="featured-episode featured-episode--blue">
+                <div class="featured-episode__glow" aria-hidden="true"></div>
+                <div class="featured-episode__glow featured-episode__glow--left" aria-hidden="true"></div>
+                <div class="featured-episode__inner section-shell">
+                  <div class="featured-episode__copy">
+                    <p class="featured-episode__label">S1 · E2 — «S*x&Kyiv»</p>
+                    <h3>S*x&Kyiv</h3>
+                    <dl class="featured-episode__meta">
+                      <div>
+                        <dt>Жанр</dt>
+                        <dd>Місто, дружба і чотири дуже різні героїні.</dd>
+                      </div>
+                      <div>
+                        <dt>Хронометраж</dt>
+                        <dd>8–9 серпня</dd>
+                      </div>
+                    </dl>
+                    <a class="featured-episode__cta" href="#contact">Обрати роль</a>
+                  </div>
+                  <div class="featured-episode__visual">
+                    <div class="featured-episode__stills">
+                      <figure class="featured-episode__still featured-episode__still--a" data-tilt>
+                        <img
+                          src="images/second-episode.png"
+                          alt=""
+                          width="800"
+                          height="600"
+                          loading="lazy"
+                          decoding="async"
+                        >
+                      </figure>
+                      <figure class="featured-episode__still featured-episode__still--b" data-tilt>
+                        <img
+                          src="images/second-episode-2.png"
+                          alt="Кадр з епізоду «S*x&Kyiv»"
+                          width="800"
+                          height="600"
+                          loading="lazy"
+                          decoding="async"
+                        >
+                      </figure>
+                    </div>
+                    <p class="featured-episode__stamp">за мотивами серіалу «Секс і місто»</p>
+                  </div>
                 </div>
-                <div>
-                  <dt>Хронометраж</dt>
-                  <dd>31 липня – 2 серпня</dd>
-                </div>
-              </dl>
-              <a class="featured-episode__cta" href="#contact">Забронювати роль</a>
+              </article>
             </div>
           </div>
-        </article>
+
+          <button
+            class="episodes-slider__arrow episodes-slider__arrow--prev swiper-button-prev"
+            type="button"
+            data-episodes-prev
+            aria-label="Попередній епізод"
+          ></button>
+          <button
+            class="episodes-slider__arrow episodes-slider__arrow--next swiper-button-next"
+            type="button"
+            data-episodes-next
+            aria-label="Наступний епізод"
+          ></button>
+          <div class="episodes-slider__pagination swiper-pagination" data-episodes-pagination></div>
+        </div>
       </section>
 
       <section class="program section-shell" id="program" aria-labelledby="program-title" data-reveal>
@@ -195,19 +252,42 @@
       </section>
 
       <section class="contact section-shell" id="contact" aria-labelledby="contact-title" data-reveal>
-        <div>
+        <div class="contact__intro">
           <p class="section-kicker">04 / фінальна сцена</p>
-          <h2 id="contact-title">Напиши нам</h2>
+          <h2 id="contact-title">Напиши <em>нам</em></h2>
         </div>
         <div class="contact__panel">
-          <p>
+          <div class="contact__glow" aria-hidden="true"></div>
+          <p class="contact__stamp" aria-hidden="true">open casting</p>
+          <p class="contact__copy">
             Маєш питання, хочеш стати героїнею наступного епізоду або партнером?
-            Ми на зв'язку.
+            <span>Ми на зв'язку.</span>
           </p>
           <div class="contact__links">
-            <a href="https://instagram.com/your.episodes" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://t.me/your_episodes" target="_blank" rel="noreferrer">Telegram</a>
-            <a href="mailto:hello@episodes.example">Email</a>
+            <a class="contact__link" href="https://instagram.com/your.episodes" target="_blank" rel="noreferrer">
+              <span class="contact__link-kicker">01</span>
+              <span class="contact__link-body">
+                <span class="contact__link-label">Соцмережа</span>
+                <span class="contact__link-value">Instagram</span>
+              </span>
+              <span class="contact__link-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="contact__link" href="https://t.me/your_episodes" target="_blank" rel="noreferrer">
+              <span class="contact__link-kicker">02</span>
+              <span class="contact__link-body">
+                <span class="contact__link-label">Месенджер</span>
+                <span class="contact__link-value">Telegram</span>
+              </span>
+              <span class="contact__link-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="contact__link" href="mailto:hello@episodes.example">
+              <span class="contact__link-kicker">03</span>
+              <span class="contact__link-body">
+                <span class="contact__link-label">Пошта</span>
+                <span class="contact__link-value">Email</span>
+              </span>
+              <span class="contact__link-arrow" aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
       </section>
