@@ -35,19 +35,26 @@ if (year) {
 
 
 const updateHeader = () => {
-
   if (!header) return;
-
-
 
   const pastHero = window.scrollY >= window.innerHeight * 0.92;
 
+  if (hero) {
+    const isEpisodePage = document.body.classList.contains("episode-page");
 
+    if (!isEpisodePage) {
+      header.classList.toggle("site-header--on-hero", !pastHero);
+    }
 
-  header.classList.toggle("site-header--on-hero", !pastHero);
+    header.classList.toggle("is-scrolled", pastHero);
+    return;
+  }
 
-  header.classList.toggle("is-scrolled", pastHero);
+  const isEpisodePage = document.body.classList.contains("episode-page");
 
+  if (isEpisodePage) {
+    header.classList.toggle("is-scrolled", window.scrollY > 48);
+  }
 };
 
 

@@ -9,6 +9,7 @@ $terracotta: #c26058;
 $lavender: #897c99;
 $sage: #798b7a;
 $caramel: #c48f63;
+$pink: #fb7aa1;
 $paper: rgba(239, 235, 226, 0.82);
 $shadow: 0 24px 80px rgba(43, 38, 34, 0.16);
 $font: "New York", Georgia, "Times New Roman", serif;
@@ -66,6 +67,7 @@ $ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --lavender: #{$lavender};
   --sage: #{$sage};
   --caramel: #{$caramel};
+  --pink: #{$pink};
   --paper: #{$paper};
   --shadow: #{$shadow};
   --font: #{$font};
@@ -791,6 +793,505 @@ a {
   }
 }
 
+.episode-page {
+  min-height: 100vh;
+  color: var(--bone);
+
+  &::before {
+    opacity: 0.12;
+    background-image:
+      linear-gradient(rgba(239, 235, 226, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(239, 235, 226, 0.04) 1px, transparent 1px);
+  }
+
+  &--dark {
+    background: var(--ink);
+  }
+
+  &--blue {
+    background: var(--blue);
+
+    .episode-body {
+      background: var(--blue);
+    }
+
+    .site-footer.site-footer--episode {
+      background: var(--blue);
+    }
+  }
+}
+
+.episode-main {
+  position: relative;
+}
+
+.episode-hero {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  padding: clamp(6rem, 10vw, 8rem) 0 clamp(4rem, 8vw, 6rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.episode-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.episode-back {
+  position: absolute;
+  top: -2.5rem;
+  left: 0;
+  opacity: 0.72;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: opacity 220ms ease, transform 220ms ease;
+
+  &:hover {
+    opacity: 1;
+    transform: translateX(-4px);
+  }
+}
+
+.episode-hero__lead {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  color: rgba(239, 235, 226, 0.88);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.episode-hero h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 0.92;
+}
+
+.site-header--episode {
+  color: var(--bone);
+  background: rgba(43, 38, 34, 0.28);
+  border-color: rgba(239, 235, 226, 0.18);
+
+  &.is-scrolled {
+    background: rgba(43, 38, 34, 0.42);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.24);
+  }
+
+  .header-cta {
+    color: var(--blue);
+    background: var(--bone);
+  }
+
+  .nav a:hover {
+    color: var(--light-brass);
+  }
+}
+
+.episode-page--blue .site-header--episode {
+  background: rgba(38, 64, 92, 0.38);
+  border-color: rgba(239, 235, 226, 0.16);
+
+  &.is-scrolled {
+    background: rgba(38, 64, 92, 0.55);
+  }
+}
+
+.site-footer--episode {
+  position: relative;
+  z-index: 10;
+  color: rgba(239, 235, 226, 0.55);
+  border-top-color: rgba(239, 235, 226, 0.12);
+}
+
+.episode-body {
+  position: relative;
+  z-index: 10;
+  background: var(--ink);
+}
+
+.episode-section,
+.episode-acts,
+.episode-team,
+.episode-takeaways,
+.episode-details,
+.episode-booking {
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  border-top: 1px solid rgba(239, 235, 226, 0.1);
+}
+
+.episode-section__kicker {
+  margin: 0 0 1rem;
+  color: var(--light-brass);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.episode-section__title {
+  margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  color: var(--bone);
+
+  em {
+    color: var(--light-brass);
+    font-style: italic;
+  }
+}
+
+.episode-section__prose {
+  max-width: 40rem;
+  color: rgba(239, 235, 226, 0.82);
+  font-size: clamp(0.98rem, 1.6vw, 1.08rem);
+  line-height: 1.65;
+
+  p {
+    margin: 0 0 1.15rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.episode-section__note {
+  margin-top: 1.5rem !important;
+  padding: 0.85rem 1.1rem;
+  color: var(--ink);
+  background: var(--light-brass);
+  border-radius: 0.2rem;
+  font-size: 0.88rem !important;
+  font-style: italic;
+  line-height: 1.4;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+  transform: rotate(-0.75deg);
+}
+
+.episode-acts__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.episode-act {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: rgba(239, 235, 226, 0.04);
+  border: 1px solid rgba(239, 235, 226, 0.1);
+  border-radius: 1rem;
+  transition: border-color 260ms ease, background 260ms ease;
+
+  &:hover {
+    background: rgba(239, 235, 226, 0.07);
+    border-color: rgba(229, 185, 83, 0.28);
+  }
+}
+
+.episode-act__number {
+  color: var(--light-brass);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.episode-act__title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--bone);
+}
+
+.episode-act__text {
+  margin: 0;
+  color: rgba(239, 235, 226, 0.78);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.episode-team__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid rgba(239, 235, 226, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: clamp(1.1rem, 2vw, 1.5rem);
+    border-bottom: 1px solid rgba(239, 235, 226, 0.08);
+
+    &:nth-child(odd) {
+      border-right: 1px solid rgba(239, 235, 226, 0.08);
+    }
+
+    &:nth-last-child(-n + 2) {
+      border-bottom: none;
+    }
+
+    &:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      border-right: none;
+    }
+  }
+}
+
+.episode-team__name {
+  color: var(--bone);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.episode-team__role {
+  color: rgba(229, 185, 83, 0.82);
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.episode-takeaways__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.85rem, 2vw, 1.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: clamp(1rem, 2vw, 1.35rem);
+    color: rgba(239, 235, 226, 0.82);
+    background: rgba(239, 235, 226, 0.04);
+    border: 1px solid rgba(239, 235, 226, 0.08);
+    border-radius: 0.85rem;
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--bone);
+    font-weight: 500;
+    font-size: 0.98rem;
+  }
+}
+
+.episode-details__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.85rem, 2vw, 1.25rem);
+}
+
+.episode-detail-card {
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: rgba(239, 235, 226, 0.04);
+  border: 1px solid rgba(239, 235, 226, 0.1);
+  border-radius: 1rem;
+
+  h3 {
+    margin: 0 0 0.75rem;
+    color: var(--light-brass);
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+    color: rgba(239, 235, 226, 0.82);
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  &--wide {
+    grid-column: 1 / -1;
+  }
+}
+
+.episode-booking {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+  padding-bottom: clamp(5rem, 10vw, 8rem);
+}
+
+.episode-booking__urgency {
+  margin: 0 0 0.75rem;
+  color: var(--terracotta);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.episode-booking__cta-mobile {
+  display: none;
+}
+
+.episode-booking__panel {
+  position: relative;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  background: rgba(239, 235, 226, 0.05);
+  border: 1px solid rgba(239, 235, 226, 0.12);
+  border-radius: 1.2rem;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  isolation: isolate;
+  transform: rotate(0.6deg);
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    content: "";
+    opacity: 0.18;
+    background-image:
+      linear-gradient(rgba(239, 235, 226, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(239, 235, 226, 0.04) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  &::after {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    content: "";
+    background:
+      radial-gradient(ellipse 70% 55% at 100% 0%, rgba(229, 185, 83, 0.18), transparent 68%),
+      radial-gradient(ellipse 50% 40% at 0% 100%, rgba(194, 96, 88, 0.12), transparent 70%);
+  }
+}
+
+.episode-booking__stamp {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  margin: 0 0 1.5rem;
+  padding: 0.55rem 1rem;
+  color: var(--ink);
+  background: var(--light-brass);
+  border-radius: 0.2rem;
+  font-size: 0.78rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.12), 0 14px 36px rgba(0, 0, 0, 0.24);
+  transform: rotate(-2deg);
+}
+
+.episode-form {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1rem;
+}
+
+.episode-form__field {
+  display: grid;
+  gap: 0.4rem;
+
+  label {
+    color: rgba(229, 185, 83, 0.82);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    color: var(--bone);
+    background: rgba(43, 38, 34, 0.45);
+    border: 1px solid rgba(239, 235, 226, 0.16);
+    border-radius: 0.65rem;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    transition: border-color 220ms ease, background 220ms ease;
+
+    &::placeholder {
+      color: rgba(239, 235, 226, 0.35);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(229, 185, 83, 0.55);
+      background: rgba(43, 38, 34, 0.62);
+    }
+  }
+
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23e5b953' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+}
+
+.episode-form__checkbox {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+
+  input {
+    flex-shrink: 0;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.15rem;
+    accent-color: var(--light-brass);
+  }
+
+  label {
+    color: rgba(239, 235, 226, 0.82);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    cursor: pointer;
+  }
+}
+
+.episode-form__submit {
+  justify-self: start;
+  margin-top: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+}
+
 .manifesto {
   background: var(--bone);
 }
@@ -811,7 +1312,7 @@ h2 {
 }
 
 h2 em {
-  color: #ff5d85;
+  color: $pink;
   font-style: italic;
   font-weight: 400;
 }
@@ -830,7 +1331,7 @@ h2 em {
   line-height: 1.15;
 
   em {
-    color: #ff5d85;
+    color: $pink;
     font-style: italic;
   }
 }
@@ -1179,6 +1680,12 @@ h2 em {
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+
+  &.site-footer--episode {
+    color: rgba(239, 235, 226, 0.55);
+    border-top-color: rgba(239, 235, 226, 0.12);
+    background: var(--ink);
+  }
 }
 
 .site-footer__inner {
@@ -1262,8 +1769,15 @@ h2 em {
     transform: none;
   }
 
-  .featured-episode__inner {
+  .featured-episode__inner,
+  .episode-hero__inner {
     grid-template-columns: 1fr;
+  }
+
+  .episode-back {
+    position: static;
+    display: inline-block;
+    margin-bottom: 1.5rem;
   }
 
   .featured-episode__stills {
@@ -1347,6 +1861,34 @@ h2 em {
   .section-heading {
     display: block;
   }
+
+  .episode-acts__list,
+  .episode-takeaways__list,
+  .episode-details__grid,
+  .episode-booking {
+    grid-template-columns: 1fr;
+  }
+
+  .episode-team__list {
+    grid-template-columns: 1fr;
+
+    li {
+      border-right: none !important;
+
+      &:nth-last-child(2) {
+        border-bottom: 1px solid rgba(239, 235, 226, 0.08);
+      }
+    }
+  }
+
+  .episode-booking__panel {
+    transform: none;
+  }
+
+  .episode-booking__cta-mobile {
+    display: inline-flex;
+    margin-top: 1.5rem;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1387,5 +1929,10 @@ h2 em {
 
   .button {
     width: 100%;
+  }
+
+  .episode-form__submit {
+    width: 100%;
+    justify-self: stretch;
   }
 }
