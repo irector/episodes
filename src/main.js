@@ -239,6 +239,29 @@ const initGrain = () => {
   });
 };
 
+const initAccordion = () => {
+  document.querySelectorAll("[data-accordion-trigger]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const item = trigger.closest(".episode-accordion__item");
+      const panel = trigger.nextElementSibling;
+      const isOpen = item?.classList.contains("is-open");
+
+      document.querySelectorAll(".episode-accordion__item.is-open").forEach((openItem) => {
+        openItem.classList.remove("is-open");
+        openItem.querySelector("[data-accordion-trigger]")?.setAttribute("aria-expanded", "false");
+        const openPanel = openItem.querySelector(".episode-accordion__panel");
+        if (openPanel) openPanel.style.maxHeight = null;
+      });
+
+      if (!isOpen && item && panel) {
+        item.classList.add("is-open");
+        trigger.setAttribute("aria-expanded", "true");
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+      }
+    });
+  });
+};
+
 initLenis();
 
 initGrain();
@@ -248,6 +271,8 @@ initHeroEntrance();
 initSectionReveals();
 
 initTilt();
+
+initAccordion();
 
 window.addEventListener("load", () => ScrollTrigger.refresh());
 
